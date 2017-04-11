@@ -1,0 +1,214 @@
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  color: #999;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  border: solid 1px #999;
+}
+
+/* Header*/
+.heading {
+  background: #7578bd;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;  
+}
+
+#app-name {
+  margin: 5px auto 5px 5px;
+  color: #fff;
+}
+
+#app-name-1 {
+  font-weight: 700;
+}
+
+#app-name-2 {
+  font-weight: 300;
+}
+
+#bell {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+#profile-pic {
+  height: 25px;
+  width: 25px;
+  border-radius: 50px;
+  margin-right: 5px;
+}
+
+#profile-name {
+  color: #fff;
+  margin-right: 10px;
+  font-size: .8em;
+}
+
+
+/*Navigation*/
+.main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.main-nav {
+  width: 20%;
+  max-width: 45px;
+  background-color: #4b4d9b;
+
+}
+
+.nav {
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#dashboard,
+#members,
+#visits,
+#settings {
+  width: 25px;
+  height: 25px;
+  margin: 10px 5px;
+}
+
+.main {
+  width: 100%;
+  max-width: 979px;
+}
+
+/*Main-Search*/
+
+.main-search {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.page-head {
+  font-size: 1.25em;
+  font-weight: 400;
+  padding-left: 10px;
+  margin-right: auto;
+}
+
+#search {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 5px;
+  border-radius: 2px;
+  border: solid 2px #999;
+}
+
+/*Zebra Alert Box Styling*/
+.myClass .ZebraDialog_BodyOuter.ZebraDialog_NoTitle.ZebraDialog_NoButtons,
+.ZebraDialog.myClass {
+  width: 86%;
+  max-width: 245px;
+  border: none;
+}
+
+.myClass .ZebraDialog_Body {
+  background: #7578bd;
+  color: #fff;
+  padding: 10px;
+  border: solid 1px #7578bd;
+  border-radius: 5px;
+}
+
+.myClass a.ZebraDialog_Close {
+  right: 40px;
+  top: 8px;
+  color: #fff;
+}
+
+/*Charts*/
+
+/*Main Traffic Chart*/
+.traffic-main {
+  padding: 10px;
+}
+
+.traffic-sec,
+.traffic-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.traffic-title {
+  margin-right: auto;
+}
+
+.traffic-selector {
+  list-style: none;
+}
+
+.traffic-selector li {
+  padding: 5px;
+  margin: 0 10px;
+}
+
+.selected {
+  background-color: #4b9b71;
+  color: #fff;
+  border: solid 1px #4b9b71;
+  border-radius: 15px;
+}
+
+/*Daily Traffic Chart*/
+.container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.traffic-daily,
+.mobile-users {
+  border: solid 1px #999;
+}
+
+.traffic-daily {
+  border-left: none;
+}
+
+.mobile-users {
+  border-right: none;
+}
+
+.title {
+  text-align: left;  
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+  /*Zebra Alert Box Styling*/
+  .myClass .ZebraDialog_BodyOuter.ZebraDialog_NoTitle.ZebraDialog_NoButtons,
+  .ZebraDialog.myClass {
+    width: 95%;
+    max-width: 693px;
+  }
+} /* end 768px media query*/
+
+@media screen and (min-width: 1024px) {
+
+
+} /* end 1024 media query*/
