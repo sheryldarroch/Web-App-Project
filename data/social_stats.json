@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Twitter",
+    "icon": "../icons/icon-twitter.svg",
+    "stat": 10,345
+  },
+  {
+    "name": "Facebook",
+    "icon": "../icons/icon-facebook.svg",
+    "stat": 8,739
+  }, 
+  {
+    "name": "Google+",
+    "icon": "../icons/icon-google-plus.svg",
+    "stat": 2,530
+  } 
+]

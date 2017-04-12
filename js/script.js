@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
   //Zebra alert box plugin  
   $.Zebra_Dialog('<strong>ALERT!</strong> Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ulrtirces vehicula ut id elit.', {
     'type': false,
@@ -55,7 +53,7 @@ $(document).ready(function() {
   
   //Mobile Users Chart
     let ctx3 = document.getElementById('mobile-users');
-    let mobileUsers = new Chart(ctx2, {
+    let mobileUsers = new Chart(ctx3, {
       type: 'doughnut',
       data: {
         labels: ['Phones', 'Tablets', 'Desktops'],
@@ -71,23 +69,24 @@ $(document).ready(function() {
           }
         ]
       }
-    });
+    }); // end Mobile Users Chart
+  
+    //Social Stats Widget
+    const socialStatsJSON = "../data/social_stats.json";
+    function displaySocialStats(data) {
+      let socialStats = '<ul class="social-stats">';
+      $.each(data,function(index,app) {
+          socialStats += '<li>';
+          socialStats += '<img class="icon" src="' + app.icon + '" alt="social media icon">';
+          socialStats += '<span class="social-title">' + app.name + '</span>';
+          socialStats += '<span class="number">' + app.stat + '</span>';
+          socialStats += '</li>'; 
+      });
+      socialStats += '</ul>';
+      $('#social-stats').html(socialStats);
+    }
+    $.getJSON(socialStatsJSON, displaySocialStats);
+   //end Social Stats Widget
   
     
-  
-//  $.ajax({
-//  url: 'https://randomuser.me/api/?inc=name, picture & noinfo',
-//  dataType: 'json',
-//  success: function(results) {
-//    let randomUser = '<ul>';
-//    randomUser += '<li class="profile-pic">';
-//    randomUser +=  results.picture.thumbnail + '</li>';
-//    randomUser += '</ul>';
-//    $('#profile').html(randomUser);
-//
-//  }
-// 
-//}); // end randomuser
-//
-
-}); // end ready
+ 

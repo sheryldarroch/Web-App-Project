@@ -4,10 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-    <script src="Zebra/javascript/zebra_dialog.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="js/script.js"></script>
     <link href="Zebra/css/default/zebra_dialog.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <title>MyWebApp</title>
@@ -33,7 +29,7 @@
         </g>
         </svg>
         
-        <img id="profile-pic" src="pics/dog_thumbnail.jpg" alt="Profile picture of Baxter Derrick">
+        <img id="profile-pic" src="pics/male-face01.png" alt="Profile picture of Baxter Derrick">
         <span id="profile-name">Baxter Derrick</span>
      </div> <!-- end .heading-->
     </header>
@@ -142,7 +138,8 @@
           <form action="index.html" method="post" class="search" role="search">
             <input type="text" name="search" id="search" placeholder="&#x1f50d  Search . . .">
           </form>
-        </div>       
+        </div>  
+        
         <div class="traffic-main">
           <div class="traffic-sec">
             <span class="traffic-title">TRAFFIC</span>
@@ -154,24 +151,27 @@
             </ul>
           </div>  <!-- end .traffic-sec -->
           
-          <canvas id="traffic-main" width="350" height="250"></canvas>
+          <canvas id="traffic-main" width="250" height="150"></canvas>
         </div> <!-- end .traffic-main -->
         
         <div class="container">
           <div class="traffic-daily">
             <span class="title">DAILY TRAFFIC</span>
-            <canvas id="traffic-daily" width="350" height="250"></canvas>
+            <canvas id="traffic-daily" width="250" height="200"></canvas>
           </div> <!-- end .traffic-daily -->
           
           <div class="mobile-users">
             <span class="title">MOBILE USERS</span>
-            <canvas id="mobile-users" width="350" height="250"></canvas>
+            <canvas id="mobile-users" width="250" height="200"></canvas>
           </div> <!-- end .mobile-users -->
         </div> <!-- .container  -->
         
-        <div class="social-stats">
-        
-        </div> <!-- end .social-stats -->
+        <div class="social-stats-container">
+          <span class="title">SOCIAL STATS</span>
+          <div id="social-stats">
+          
+          </div> <!-- end #social-stats -->
+        </div> <!-- end .social-stats-container -->
         
         <div class="container">
           <div class="new-members">
@@ -195,6 +195,9 @@
         
       </div> <!--end .main -->
     </div> <!-- end .main-container -->  
-    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script src="Zebra/javascript/zebra_dialog.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="js/script.js"></script>    
   </body>
 </html>

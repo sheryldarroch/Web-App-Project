@@ -8,7 +8,8 @@ body {
   border: solid 1px #999;
 }
 
-/* Header*/
+/****Header****/
+
 .heading {
   background: #7578bd;
   margin: 0;
@@ -39,7 +40,7 @@ body {
 }
 
 #profile-pic {
-  height: 25px;
+  height: 30px;
   width: 25px;
   border-radius: 50px;
   margin-right: 5px;
@@ -52,11 +53,14 @@ body {
 }
 
 
-/*Navigation*/
+/****Navigation****/
+
 .main-container {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  margin: 0;
+  padding: 0;
 }
 
 .main-nav {
@@ -84,36 +88,39 @@ body {
   margin: 10px 5px;
 }
 
+/**** Main Container****/
+
 .main {
-  width: 100%;
+  width: 80%;
   max-width: 979px;
+  padding: 10px;
 }
 
-/*Main-Search*/
+/****Main-Search****/
 
 .main-search {
-  width: 100%;
-  display: flex;
+   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .page-head {
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: 400;
-  padding-left: 10px;
   margin-right: auto;
 }
 
 #search {
   display: inline-block;
-  margin: 10px 10px 0 0;
+  width: 100px;
+  margin: 10px 5px 0 0;
   padding: 5px;
-  border-radius: 2px;
+  border-radius: 5px;
   border: solid 2px #999;
 }
 
-/*Zebra Alert Box Styling*/
+/****Zebra Alert Box Styling****/
+
 .myClass .ZebraDialog_BodyOuter.ZebraDialog_NoTitle.ZebraDialog_NoButtons,
 .ZebraDialog.myClass {
   width: 86%;
@@ -135,23 +142,27 @@ body {
   color: #fff;
 }
 
-/*Charts*/
+/************************
+Charts
+************************/
 
-/*Main Traffic Chart*/
-.traffic-main {
-  padding: 10px;
-}
+/****Main Traffic Chart****/
 
 .traffic-sec,
 .traffic-selector {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+
+.traffic-sec {
+  width: 80%;
 }
 
 .traffic-title {
   margin-right: auto;
+  font-size: .75em;
 }
 
 .traffic-selector {
@@ -159,53 +170,88 @@ body {
 }
 
 .traffic-selector li {
+  font-size: .75em;
   padding: 5px;
-  margin: 0 10px;
+  margin: 0 2.5px;
 }
 
 .selected {
-  background-color: #4b9b71;
-  color: #fff;
-  border: solid 1px #4b9b71;
-  border-radius: 15px;
+background-color: #4b9b71;
+color: #fff;
+border: solid 1px #4b9b71;
+border-radius: 15px;
 }
 
-/*Daily Traffic Chart*/
+/****Daily Traffic and Mobile Users Charts****/
+
 .container {
   padding: 10px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .traffic-daily,
 .mobile-users {
-  border: solid 1px #999;
-}
-
-.traffic-daily {
-  border-left: none;
-}
-
-.mobile-users {
-  border-right: none;
+  border-top: solid 1px #999;
+  padding: 10px;
 }
 
 .title {
+  font-size: .75em;
   text-align: left;  
+}
+
+/****Social Stats****/
+
+.social-stats-container {
+  padding: 10px;
+
 }
 
 
 
+/**** Media Queries****/
 
 @media screen and (min-width: 768px) {
 
-  /*Zebra Alert Box Styling*/
+  /****Zebra Alert Box Styling*****/
+  
   .myClass .ZebraDialog_BodyOuter.ZebraDialog_NoTitle.ZebraDialog_NoButtons,
   .ZebraDialog.myClass {
     width: 95%;
     max-width: 693px;
   }
+
+  /****Main Traffic Chart****/  
+  
+  .traffic-title,
+  .traffic-selector li,
+  .title {
+    font-size: 1em;
+  }
+  
+  /****Daily Traffic and Mobile Users Charts****/
+  
+  .container {
+  flex-direction: row;
+  }
+  
+  .traffic-daily,
+  .mobile-users {
+    border: solid 1px #999;
+    width: 50%;
+  }
+  
+  .traffic-daily {
+    border-left: none;
+  }
+  
+  .mobile-users {
+    border-right: none;
+  }
+  
+
 } /* end 768px media query*/
 
 @media screen and (min-width: 1024px) {
