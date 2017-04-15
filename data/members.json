@@ -1,0 +1,45 @@
+//"members"
+           [
+            {
+              "name": "Phoebe Buffay",
+              "email": "phoebe@friends.com",
+              "member": 2015-10-15,
+              "activity": "Phoebe Buffay liked your recent Facebook post.",
+              "activityDate": 2017-04-12
+            },
+            {
+              "name": "Rachel Green",
+              "email": "rachel@friends.com",
+              "member": 2014-01-07,
+              "activity": "Rachel Green commented on your Making Money blog post.",
+              "activityDate": 2017-04-10    
+            },
+            {
+              "name": "Monica Geller",
+              "email": "monica@friends.com",
+              "member": 2016-03-27, 
+              "activity": "Monica Geller commented on Entrepreneurial Tips.",
+              "activityDate": 2017-04-13    
+            },
+            {
+              "name": "Chandler Bing",
+              "email": "chandler@friends.com",  
+              "member": 2016-08-02, 
+              "activity": "Chandler Bing liked your recent Facebook post.",
+              "activityDate": 2017-04-10    
+            },
+            {
+              "name": "Ross Geller",
+              "email": "ross@friends.com",    
+              "member": 2015-07-12,
+              "activity": "Ross Geller commented on your recent Facebook post.",
+              "activityDate": 2017-04-12    
+            },  
+            {
+              "name": "Joey Tribbiani",
+              "email": "joey@friends.com",  
+              "member": 2017-03-30, 
+              "activity": "Joey Tribbiani re-tweeted Slaying Life.",
+              "activityDate": 2017-04-12    
+            }
+          ]
