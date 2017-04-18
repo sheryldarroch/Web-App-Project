@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet">
     <link href="Zebra/css/default/zebra_dialog.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <title>MyWebApp</title>
@@ -38,7 +39,7 @@
       <nav class="main-nav" role="navigation">
         <ul class="nav flex">
           <li id="dashboard">
-            <a href="#">
+            <a href="index.html">
               <svg version="1.1" id="Line_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
               <style type="text/css">
@@ -61,7 +62,7 @@
           </li>
         
           <li id="members">
-            <a href="#">
+            <a href="index.html">
               <svg version="1.1" id="Line_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
        viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
               <style type="text/css">
@@ -84,7 +85,7 @@
           </li>
           
           <li id="visits">
-            <a href="#">
+            <a href="index.html">
               <svg version="1.1" id="Line_12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
               <style type="text/css">
@@ -105,7 +106,7 @@
           </li>
           
           <li id="settings">
-            <a href="#">
+            <a href="index.html">
               <svg version="1.1" id="Line_6" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
               <style type="text/css">
@@ -141,43 +142,21 @@
         </div>  
         
         <div class="traffic-main grid-100">
-          <div class="traffic-sec">
+          <div class="traffic-sec flex">
             <span class="traffic-title">TRAFFIC</span>
             <ul class="traffic-selector flex">
-              <li id="slide-1" selected>Hourly</li>
+              <li id="slide-1" class="selected">Hourly</li>
               <li id="slide-2">Daily</li>
               <li id="slide-3">Weekly</li>
               <li id="slide-4">Monthly</li>
             </ul>
-            <canvas class="traffic-main-chart" id="traffic-main" width="250" height="150"></canvas>
-<!--
-            <canvas class="traffic-main-chart" id="traffic-daily-2" width="250" height="150"></canvas>
-            <canvas class="traffic-main-chart" id="traffic-weekly" width="250" height="150"></canvas>
-            <canvas class="traffic-main-chart" id="traffic-monthly" width="250" height="150"></canvas>
--->
           </div>  <!-- end .traffic-sec -->
+          <canvas class="traffic-main-chart" id="traffic-hourly" width="250" height="150"></canvas>
+          <canvas class="traffic-main-chart" id="traffic-daily-2" width="250" height="150"></canvas>
+          <canvas class="traffic-main-chart" id="traffic-weekly" width="250" height="150"></canvas>
+          <canvas class="traffic-main-chart" id="traffic-monthly" width="250" height="150"></canvas>
+          
         </div> <!-- end .traffic-main -->
-<!--
-        <div class="traffic-main grid-100">
-          <div class="traffic-sec flex">
-            <span class="traffic-title">TRAFFIC</span>
-            <header class="traffic-selector flex">
-              <label for="slide-1">Hourly</label>
-              <label for="slide-2">Daily</label>
-              <label for="slide-3">Weekly</label>
-              <label for="slide-4">Monthly</label>
-            </header>
-          </div>
-          <input id="slide-1" type="radio" name="slides" checked>
-          <canvas class="slide slide-one" id="traffic-hourly" width="250" height="150"></canvas>
-          <input id="slide-2" type="radio" name="slides" checked>
-          <canvas class="slide slide-two" id="traffic-daily-2" width="250" height="150"></canvas>      
-          <input id="slide-3" type="radio" name="slides" checked>
-          <canvas class="slide slide-three" id="traffic-weekly" width="250" height="150"></canvas>
-          <input id="slide-4" type="radio" name="slides" checked>
-          <canvas class="slide slide-four" id="traffic-monthly" width="250" height="150"></canvas>
-        </div>
--->
         
         <div class="container flex">
           <div class="traffic-daily grid-50">
@@ -276,10 +255,13 @@
           <div class="message-user grid-50">
             <span class="title">MESSAGE USERS</span>
             <form class="message-user-form flex" action="index.html" method="post">
-              <input required type="text" name="search_user"  class="search" id="search-user" placeholder="Search for User">
+              <input type="text" name="search_user"  class="search" id="search-user" placeholder="Search for User">
               <textarea id="message-for-user" name="message_user" placeholder="Message for User"></textarea>
-              <button class="button button-p" type="submit" value="send">Send</button>
+              <button id="message-user-button" class="button button-p" type="submit" value="send">Send</button>
+              <div id="invalid-name">&uArr; PLEASE ENTER A VALID USER NAME!</div>
+              <div id="invalid-message">&uArr; PLEASE ENTER A MESSAGE!</div>
             </form>
+            
           </div> <!-- end .message-user -->
   
           <div class="settings grid-50">
@@ -307,8 +289,8 @@
                 <option value="pacific_time">Pacific Time, UTC-8:00</option>
               </select>
               <div class="settings-buttons flex">
-                <button class="button button-p" type="submit" value="save">SAVE</button>
-                <button class="button button-g" type="reset" value="cancel">Cancel</button>
+                <button id="settings-save-button" class="button button-p" type="submit" value="save">SAVE</button>
+                <button id="settings-cancel-button" class="button button-g" type="reset" value="cancel">Cancel</button>
               </div>
             </form>
           </div> <!-- end .settings -->
@@ -317,6 +299,7 @@
       </div> <!--end .main -->
     </div> <!-- end .main-container -->  
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+    <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     <script src="Zebra/javascript/zebra_dialog.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <!--

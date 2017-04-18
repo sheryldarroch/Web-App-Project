@@ -1,20 +1,23 @@
-//const trafficHourly = document.getElementById('traffic-hourly');
-//const trafficDaily2 = document.getElementById('traffic-daily-2');
-//const trafficWeekly = document.getElementById('traffic-weekly');
-//const trafficMonthly = document.getElementById('traffic-monthly');
-
+const trafficHourly = document.getElementById('traffic-hourly');
+const trafficDaily2 = document.getElementById('traffic-daily-2');
+const trafficWeekly = document.getElementById('traffic-weekly');
+const trafficMonthly = document.getElementById('traffic-monthly');
 const trafficDaily = document.getElementById('traffic-daily');
 const mobileUsers = document.getElementById('mobile-users');
 const slide1 = document.getElementById('slide-1');
 const slide2 = document.getElementById('slide-2');
 const slide3 = document.getElementById('slide-3');
 const slide4 = document.getElementById('slide-4');
+const searchAlert = $('#invalid-name');
+const messageAlert = $('#invalid-message');
+const search = $('#search-user');
+const message = $('#message-for-user');
 
 //Zebra alert box plugin  
-$.Zebra_Dialog('<strong>ALERT!</strong> Your password with expire in 6 days. Please set a new password.', {
+$.Zebra_Dialog('<strong>ALERT!</strong> Your password will expire in 6 days. Please set a new password.', {
   'type': false,
   'modal': false,
-  'position': ['center', 'top + 120'],
+  'position': ['center', 'top + 55'],
   'buttons': false,
   'overlay_opacity': 0,
   'custom_class': 'myClass'
@@ -22,162 +25,170 @@ $.Zebra_Dialog('<strong>ALERT!</strong> Your password with expire in 6 days. Ple
 
 //Notification using Zebra plugin
 $('.bell').click(function(e) {
-  $.Zebra_Dialog('You have 4 new messages.<br>You have 3 new followers.', {
+  new $.Zebra_Dialog('You have 4 new messages.<br>You have 3 new followers.', {
     'type': false,
     'modal': false,
-    'position': ['right -50', 'top + 50'],
+    'position': ['right -75', 'top + 50'],
     'buttons': false,
     'overlay_opacity': 0,
     'custom_class': 'alert'
   });
 });
 
-//**********************Web Traffic Charts
-//function hideChart() {
-//  let canvas = document.getElementsByClassName('traffic-main-chart');
-//  $(canvas).each(()=>{
-//    if ( this.style.left === 0 ) {
-//          this.style.left = '100%';
-//          this.style.transition = 'left 0s .75s';
-//      }
-//  });
-//}
+//Web Traffic Charts    
 
-//let label = '.traffic-selector label';
-//$(label).click(()=> {
-//    let id = $(label).attr('for');
-////    hideChart();
-//    if (id = 'slide-1') {
-//      trafficHourly.style.left = 0;
-//      trafficHourly.style.transition = "left .65s ease-out";
-//    } else if (id = 'slide-2') {
-//      trafficDaily2.style.left = 0;
-//      trafficDaily2.style.transition = "left .65s ease-out";
-//    } else if (id = 'slide-3') {
-//      trafficWeekly.style.left = 0;
-//      trafficWeekly.style.transition = "left .65s ease-out";
-//    } else if (id = 'slide-4') {
-//      trafficMonthly.style.left = 0;
-//      trafficMonthly.style.transition = "left .65s ease-out";
-//    } else {
-//      trafficHourly.style.left = 0;
-//      trafficHourly.style.transition = "left .65s ease-out";
-//    }
-//});
-//                      
-//function hideChart (e) {
-//    (e).css('left', '100%').css('transition', 'left 0 .75s');
-//  }
+//Hourly Traffic Chart
+let trafficH = new Chart.Line(trafficHourly, {
+data: {
+  labels: ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
+  datasets: [
+        {
+          label: '',
+          data: [15, 5, 8, 10, 80, 2, 6, 15, 75, 36, 4, 31],  
+          lineTension: 0,
+          backgroundColor: 'rgba(203,204,230,0.5)',
+          borderWidth: 3,
+          borderColor: 'rgb(117,120,189)',
+          pointBorderColor: 'rgb(117,120,189)',
+          pointBackgroundColor: 'rgb(255,255,255)',
+          pointBorderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 8,
+          pointStyle: 'circle',
+          showLine: true,
+          spanGaps: true,          
+        }
+    ]
+},
+}); //end Hourly Traffic Chart
 
-const trafficMain = document.getElementById('traffic-main');
-$('.traffic-selector li').click(()=> {
-  $('.traffic-selector li').each(()=> {
-      let id = $(this).attr('id');
-      
-      if (id === 'slide-1') {
-        //Hourly Traffic Chart
-        let ctx = new Chart.Line(trafficMain, {
-        data: {
-          labels: ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'],
-          datasets: [
-                {
-                  label: '',
-                  data: [15, 5, 8, 10, 80, 2, 6, 15, 75, 36, 4, 31],  
-                  lineTension: 0,
-                  backgroundColor: 'rgba(203,204,230,0.5)',
-                  borderWidth: 3,
-                  borderColor: 'rgb(117,120,189)',
-                  pointBorderColor: 'rgb(117,120,189)',
-                  pointBackgroundColor: 'rgb(255,255,255)',
-                  pointBorderWidth: 3,
-                  pointRadius: 4,
-                  pointHoverRadius: 8,
-                  pointStyle: 'circle',
-                  showLine: true,
-                  spanGaps: true,          
-                }
-            ]
-        },
-        }); //end Hourly Traffic Chart
-      } else if (id === 'slide-2') {
-          //Daily Traffic Chart
-          ctx = new Chart.Line(trafficMain, {
-          data: {
-            labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
-            datasets: [
-                  {
-                    label: '',
-                    data: [287, 50, 378, 500, 48, 610, 137],  
-                    lineTension: 0,
-                    backgroundColor: 'rgba(203,204,230,0.5)',
-                    borderWidth: 3,
-                    borderColor: 'rgb(117,120,189)',
-                    pointBorderColor: 'rgb(117,120,189)',
-                    pointBackgroundColor: 'rgb(255,255,255)',
-                    pointBorderWidth: 3,
-                    pointRadius: 4,
-                    pointHoverRadius: 8,
-                    pointStyle: 'circle',
-                    showLine: true,
-                    spanGaps: true,          
-                  }
-              ]
-          },
-          }); //end Daily Traffic Chart
-      } else if (id === 'slide-3') {
-          //Weekly Traffic Chart
-          ctx = new Chart.Line(trafficMain, {
-          data: {
-            labels: ['9-15', '16-22', '23-29', '30-6', '7-13', '14-20', '21-27', '28-3', '4-10', '11-17'],
-            datasets: [
-                  {
-                    label: '',
-                    data: [500, 1030, 950, 1200, 1150, 1500, 1489, 1865, 800, 2010],  
-                    lineTension: 0,
-                    backgroundColor: 'rgba(203,204,230,0.5)',
-                    borderWidth: 3,
-                    borderColor: 'rgb(117,120,189)',
-                    pointBorderColor: 'rgb(117,120,189)',
-                    pointBackgroundColor: 'rgb(255,255,255)',
-                    pointBorderWidth: 3,
-                    pointRadius: 4,
-                    pointHoverRadius: 8,
-                    pointStyle: 'circle',
-                    showLine: true,
-                    spanGaps: true,          
-                  }
-              ]
-          },
-          }); //end Weekly Traffic Chart  
-      } else if (id === 'slide-4') {
-          // Monthly Traffic Chart
-          ctx = new Chart.Line(trafficMain, {
-          data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-            datasets: [
-                  {
-                    label: '',
-                    data: [3680, 2530, 1950, 5654, 4250, 6507, 2489, 6865, 7800, 5010, 8426, 3689],  
-                    lineTension: 0,
-                    backgroundColor: 'rgba(203,204,230,0.5)',
-                    borderWidth: 3,
-                    borderColor: 'rgb(117,120,189)',
-                    pointBorderColor: 'rgb(117,120,189)',
-                    pointBackgroundColor: 'rgb(255,255,255)',
-                    pointBorderWidth: 3,
-                    pointRadius: 4,
-                    pointHoverRadius: 8,
-                    pointStyle: 'circle',
-                    showLine: true,
-                    spanGaps: true,          
-                  }
-              ]
-          },
-          }); //end Monthly Traffic Chart  
-      } 
-  });
+//Daily Traffic Chart
+let trafficD2 = new Chart.Line(trafficDaily2, {
+data: {
+  labels: ['S', 'M', 'T', 'W', 'TH', 'F', 'S'],
+  datasets: [
+        {
+          label: '',
+          data: [287, 50, 378, 500, 48, 610, 137],  
+          lineTension: 0,
+          backgroundColor: 'rgba(203,204,230,0.5)',
+          borderWidth: 3,
+          borderColor: 'rgb(117,120,189)',
+          pointBorderColor: 'rgb(117,120,189)',
+          pointBackgroundColor: 'rgb(255,255,255)',
+          pointBorderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 8,
+          pointStyle: 'circle',
+          showLine: true,
+          spanGaps: true,          
+        }
+    ]
+},
+}); //end Daily Traffic Chart
+
+//Weekly Traffic Chart
+let trafficW = new Chart.Line(trafficWeekly, {
+data: {
+  labels: ['9-15', '16-22', '23-29', '30-6', '7-13', '14-20', '21-27', '28-3', '4-10', '11-17'],
+  datasets: [
+        {
+          label: '',
+          data: [500, 1030, 950, 1200, 1150, 1500, 1489, 1865, 800, 2010],  
+          lineTension: 0,
+          backgroundColor: 'rgba(203,204,230,0.5)',
+          borderWidth: 3,
+          borderColor: 'rgb(117,120,189)',
+          pointBorderColor: 'rgb(117,120,189)',
+          pointBackgroundColor: 'rgb(255,255,255)',
+          pointBorderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 8,
+          pointStyle: 'circle',
+          showLine: true,
+          spanGaps: true,          
+        }
+    ]
+},
+}); //end Weekly Traffic Chart  
+
+// Monthly Traffic Chart
+let trafficM = new Chart.Line(trafficMonthly, {
+data: {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  datasets: [
+        {
+          label: '',
+          data: [3680, 2530, 1950, 5654, 4250, 6507, 2489, 6865, 7800, 5010, 8426, 3689],  
+          lineTension: 0,
+          backgroundColor: 'rgba(203,204,230,0.5)',
+          borderWidth: 3,
+          borderColor: 'rgb(117,120,189)',
+          pointBorderColor: 'rgb(117,120,189)',
+          pointBackgroundColor: 'rgb(255,255,255)',
+          pointBorderWidth: 3,
+          pointRadius: 4,
+          pointHoverRadius: 8,
+          pointStyle: 'circle',
+          showLine: true,
+          spanGaps: true,          
+        }
+    ]
+},
+}); //end Monthly Traffic Chart  
+
+  trafficHourly.style.display = 'block';
+  trafficDaily2.style.display = 'none';
+  trafficWeekly.style.display = 'none';
+  trafficMonthly.style.display = 'none';  
+
+
+$('#slide-1').click((e)=>{
+  $('#slide-1').addClass('selected');
+  $('#slide-2').removeClass('selected');
+  $('#slide-3').removeClass('selected');
+  $('#slide-4').removeClass('selected');
+  trafficHourly.style.display = 'block';
+  trafficDaily2.style.display = 'none';
+  trafficWeekly.style.display = 'none';
+  trafficMonthly.style.display = 'none';  
 });
 
+$('#slide-2').click((e)=>{
+  $('#slide-1').removeClass('selected');
+  $('#slide-2').addClass('selected');
+  $('#slide-3').removeClass('selected');
+  $('#slide-4').removeClass('selected');
+  trafficHourly.style.display = 'none';
+  trafficDaily2.style.display = 'block';
+  trafficWeekly.style.display = 'none';
+  trafficMonthly.style.display = 'none';  
+});
+
+$('#slide-3').click((e)=>{
+  $('#slide-1').removeClass('selected');
+  $('#slide-2').removeClass('selected');
+  $('#slide-3').addClass('selected');
+  $('#slide-4').removeClass('selected');
+  trafficHourly.style.display = 'none';
+  trafficDaily2.style.display = 'none';
+  trafficWeekly.style.display = 'block';
+  trafficMonthly.style.display = 'none'; 
+});
+
+$('#slide-4').click((e)=>{
+  $('#slide-1').removeClass('selected');
+  $('#slide-2').removeClass('selected');
+  $('#slide-3').removeClass('selected');
+  $('#slide-4').addClass('selected');
+  trafficHourly.style.display = 'none';
+  trafficDaily2.style.display = 'none';
+  trafficWeekly.style.display = 'none';
+  trafficMonthly.style.display = 'block'; 
+});
+    //end Web Traffic Charts
+  
+  
 //Stand Alone Daily Traffic Chart
 
 let trafficD = new Chart(trafficDaily, {
@@ -301,6 +312,132 @@ $.each(stats, function(index, item) {
 recentActivityStats += '</ul>';
 document.getElementById('recent-activity').innerHTML = recentActivityStats;
 //end Recent Activity Widget
+
+//Message User Search autocomplete
+$( function() {
+  let usersList = [
+    "Phoebe Buffay",
+    "Rachel Green",
+    "Monica Geller",
+    "Ross Geller",
+    "Joey Tribbiani",
+    "Chandler Bing",
+    "Jerry Seinfeld",
+    "George Costanza",
+    "Elaine Benes",
+    "Cosmo Kramer",
+    "Newman",
+    "Soup Nazi"
+  ];
+  $( "#search-user" ).autocomplete({
+    source: usersList
+  });
+});
+
+
+//Hide the Message User Alerts
+$(searchAlert).hide();
+$(messageAlert).hide();
+
+//Display error messages if "search for user" field or "message user" field is blank when send button is clicked
+//User clicks message users send button
+$('#message-user-button').click(()=>{
+  let searchVal = $(search).val();
+  let messageVal = $(message).val();
+  //check if search field has a name in it
+  if ( searchVal != '') {
+    //check if message field has a message in it
+    if  (messageVal != '') {
+    return true;
+    } else {
+      //If message field is empty
+      $(messageAlert).show();
+      $(searchAlert).hide();
+      return false;
+      } 
+  } else {
+    //if search field is empty
+     $(searchAlert).show();
+     $(messageAlert).hide();
+      return false;
+    }
+});
+
+//Hide error message when search field is clicked
+$(search).click(()=>{
+  $(searchAlert).hide();
+});
+  
+//Hide error message when message field is clicked  
+$(message).click(()=>{
+  $(messageAlert).hide();
+});
+
+//Display a confirmatin message when form is submitted  
+$('.message-user-form').submit((e)=>{
+  e.preventDefault(); ///////only using this because form isn't actually posting - would use AJAX for this in real life!!!
+  //display confirmation box
+  new $.Zebra_Dialog('Congratulations! Your message has been sent successfully.', {
+  'type': false,
+  'modal': false,
+  'position': ['left +100', 'bottom -100'],
+  'buttons': false,
+  'overlay_opacity': 0,
+  'custom_class': 'send'
+   });
+});
+
+
+//Use localStorage to save settings
+
+function getSavedSettings(name) {
+  let savedData = localStorage.getItem('name');
+  //if settings exists
+  if(savedData) {
+    //return setting's contents
+    return JSON.parse(savedData);
+  } else {
+    //otherwise, return an empty [];
+    return [];
+  }
+}
+
+window.onload = ()=> {
+  
+  $('#settings-form').submit((e)=>{
+  e.preventDefault();
+  let savedEmail = $('input[id=settings-email]:checked').val();
+  let settings = getSavedSettings('email');
+    if(settings === savedEmail) {
+        return false;
+     } else {
+      settings.push(savedEmail);
+      localStorage.setItem('email', JSON.stringify(savedEmail));
+      return true;
+      }
+  });
+};
+  
+  
+
+//function saveSettings(str) {
+//  let settings = getSavedSettings();
+//  //if string does not exist or if strings exists inside of the array
+//  if( !str || settings.indexof(str) > -1) {
+//    return false;
+//  } else {
+//    //otherwise push/add string to settings
+//    settings.push(str);
+//    //stringify settings and save it to 'savedSettings' in localStorage
+//    localStorage.setItem('savedSettings', JSON.stringify(settings));
+//    return true;
+//  }
+//}
+
+//  let savedProfile = $('#settings-profile').val();
+//  let savedTimezone = $('#settings-timezone').val();
+//  localStorage.setItem('savedSettings', JSON.stringify(savedProfile));
+//  localStorage.setItem('savedSettings', JSON.stringify(savedTimezone));
 
 
 
