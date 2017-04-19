@@ -243,7 +243,7 @@ Charts
   padding: 5px;
   cursor: pointer; 
   border-radius: 15px;
-  transition: all .75s ease-in-out;
+  transition: all .75s ease-out;
 }
 
 .selected {
@@ -575,13 +575,6 @@ input:checked + .slider:after {
 @media screen and (min-width: 768px) {
 
   /****Zebra Alert Box Styling*****/
-  
-/*
-  .alert a.ZebraDialog_Close {
-    right: 1px;
-    top: 2px;
-  }
-*/
   
   .myClass .ZebraDialog_BodyOuter.ZebraDialog_NoTitle.ZebraDialog_NoButtons,
   .ZebraDialog.myClass {

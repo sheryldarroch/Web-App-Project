@@ -12,6 +12,7 @@ const searchAlert = $('#invalid-name');
 const messageAlert = $('#invalid-message');
 const search = $('#search-user');
 const message = $('#message-for-user');
+const timezoneOption = $('#settings-timezone option');
 
 //Zebra alert box plugin  
 $.Zebra_Dialog('<strong>ALERT!</strong> Your password will expire in 6 days. Please set a new password.', {
@@ -390,54 +391,66 @@ $('.message-user-form').submit((e)=>{
 
 //Use localStorage to save settings
 
-function getSavedSettings(name) {
-  let savedData = localStorage.getItem('name');
-  //if settings exists
-  if(savedData) {
-    //return setting's contents
-    return JSON.parse(savedData);
-  } else {
-    //otherwise, return an empty [];
-    return [];
-  }
-}
-
 window.onload = ()=> {
+  let email = localStorage.getItem('email');
+  let profile = localStorage.getItem('profile');
+  let timezone = localStorage.getItem('timezone');
+
+  //Check value of email checkbox in local storage and set checkbox accordingly
+  if(email === 'true') {
+    $('#settings-email').prop('checked', true);
+  } else {
+      $('#settings-email').prop('checked', false);
+    }
+
+  //Check value of profile checkbox in local storage and set checkbox accordingly
+  if(profile === 'true') {
+    $('#settings-profile').prop('checked', true);
+  } else {
+      $('#settings-profile').prop('checked', false);
+    }
+
+  //Check value of timezone select in local storage and set select accordingly
+  if(timezone !== null) {
+//    return JSON.parse(timezone);
+    //iterate over options to find the one that matches the one in timezone
+    $(timezoneOption).each((index, item)=>{
+      if($(timezoneOption).text() === timezone) {
+        $(item).prop('selected', true);
+      } 
+    });
+  } else {
+     $('#settings-timezone option:selected').prop('selected', false);
+     $('#settings-timezone option[value=""]').prop('selected', true);
+  }
   
-  $('#settings-form').submit((e)=>{
-  e.preventDefault();
-  let savedEmail = $('input[id=settings-email]:checked').val();
-  let settings = getSavedSettings('email');
-    if(settings === savedEmail) {
-        return false;
-     } else {
-      settings.push(savedEmail);
-      localStorage.setItem('email', JSON.stringify(savedEmail));
-      return true;
+  //Save settings to localStorage when save button is clicked/form is submitted
+  $('.settings-form').submit((e)=>{
+    e.preventDefault();
+    let savedEmail = $('#settings-email').is(':checked');
+    let savedProfile = $('#settings-profile').is(':checked');
+    localStorage.setItem('email', JSON.stringify(savedEmail));
+    localStorage.setItem('profile', JSON.stringify(savedProfile));
+    
+    //iterate over select options to determine which one is selected    
+    $(timezoneOption).each((index, item)=>{
+      if( $(item).prop('selected', true) ) {
+        let savedTimezone = $(item).text();
+        localStorage.setItem('timezone', JSON.stringify(savedTimezone));
       }
+    });  
   });
-};
+   
+  //Clear localStorage when cancel button is clicked  
+  $('#settings-cancel-button').click(()=>{
+      localStorage.removeItem('email');  
+      localStorage.removeItem('profile');
+      localStorage.removeItem('timezone');
+   });  
+    
+}; //end window.onload
   
   
-
-//function saveSettings(str) {
-//  let settings = getSavedSettings();
-//  //if string does not exist or if strings exists inside of the array
-//  if( !str || settings.indexof(str) > -1) {
-//    return false;
-//  } else {
-//    //otherwise push/add string to settings
-//    settings.push(str);
-//    //stringify settings and save it to 'savedSettings' in localStorage
-//    localStorage.setItem('savedSettings', JSON.stringify(settings));
-//    return true;
-//  }
-//}
-
-//  let savedProfile = $('#settings-profile').val();
-//  let savedTimezone = $('#settings-timezone').val();
-//  localStorage.setItem('savedSettings', JSON.stringify(savedProfile));
-//  localStorage.setItem('savedSettings', JSON.stringify(savedTimezone));
 
 
 
