@@ -12,28 +12,19 @@ const searchAlert = $('#invalid-name');
 const messageAlert = $('#invalid-message');
 const search = $('#search-user');
 const message = $('#message-for-user');
-const timezoneOption = $('#settings-timezone option');
 
-//Zebra alert box plugin  
-$.Zebra_Dialog('<strong>ALERT!</strong> Your password will expire in 6 days. Please set a new password.', {
-  'type': false,
-  'modal': false,
-  'position': ['center', 'top + 55'],
-  'buttons': false,
-  'overlay_opacity': 0,
-  'custom_class': 'myClass'
-}); //end Zebra alert box plugin
 
-//Notification using Zebra plugin
-$('.bell').click(function(e) {
-  new $.Zebra_Dialog('You have 4 new messages.<br>You have 3 new followers.', {
-    'type': false,
-    'modal': false,
-    'position': ['right -75', 'top + 50'],
-    'buttons': false,
-    'overlay_opacity': 0,
-    'custom_class': 'alert'
-  });
+//Make Main Alert disappear on click
+$('.alert-main').click(()=>{
+   $('.alert-main').hide();
+});
+  
+//Hide Bell/Notification Alert
+$('.alert-bell').hide();
+  
+//Make Bell/Notification Alert show and hide on mouse over
+$('.bell').click(()=>{
+  $('.alert-bell').toggle();
 });
 
 //Web Traffic Charts    
@@ -346,9 +337,9 @@ $('#message-user-button').click(()=>{
   let searchVal = $(search).val();
   let messageVal = $(message).val();
   //check if search field has a name in it
-  if ( searchVal != '') {
+  if ( searchVal !== '') {
     //check if message field has a message in it
-    if  (messageVal != '') {
+    if  (messageVal !== '') {
     return true;
     } else {
       //If message field is empty
@@ -374,20 +365,23 @@ $(message).click(()=>{
   $(messageAlert).hide();
 });
 
+//Hide confirmation message
+ $('.alert-confirm').hide();  
+  
 //Display a confirmatin message when form is submitted  
 $('.message-user-form').submit((e)=>{
   e.preventDefault(); ///////only using this because form isn't actually posting - would use AJAX for this in real life!!!
   //display confirmation box
-  new $.Zebra_Dialog('Congratulations! Your message has been sent successfully.', {
-  'type': false,
-  'modal': false,
-  'position': ['left +100', 'bottom -100'],
-  'buttons': false,
-  'overlay_opacity': 0,
-  'custom_class': 'send'
-   });
+  $('.alert-confirm').show();
+  //clear #search-user and #message-for-user because form isn't actually posting
+  $('#search-user').val('');
+  $('#message-for-user').val('');
 });
 
+//Hide confirmation message when user clicks on it
+  $('.alert-confirm').click(()=>{
+      $('.alert-confirm').hide(); 
+});
 
 //Use localStorage to save settings
 
@@ -411,35 +405,20 @@ window.onload = ()=> {
     }
 
   //Check value of timezone select in local storage and set select accordingly
-  if(timezone !== null) {
-//    return JSON.parse(timezone);
-    //iterate over options to find the one that matches the one in timezone
-    $(timezoneOption).each((index, item)=>{
-      if($(timezoneOption).text() === timezone) {
-        $(item).prop('selected', true);
-      } 
-    });
-  } else {
-     $('#settings-timezone option:selected').prop('selected', false);
-     $('#settings-timezone option[value=""]').prop('selected', true);
-  }
-  
+   if(timezone) {
+     $('#settings-timezone').val(JSON.parse(timezone));
+    } 
+
   //Save settings to localStorage when save button is clicked/form is submitted
   $('.settings-form').submit((e)=>{
     e.preventDefault();
     let savedEmail = $('#settings-email').is(':checked');
     let savedProfile = $('#settings-profile').is(':checked');
+    let savedTimezone = $('#settings-timezone').val();
     localStorage.setItem('email', JSON.stringify(savedEmail));
     localStorage.setItem('profile', JSON.stringify(savedProfile));
-    
-    //iterate over select options to determine which one is selected    
-    $(timezoneOption).each((index, item)=>{
-      if( $(item).prop('selected', true) ) {
-        let savedTimezone = $(item).text();
-        localStorage.setItem('timezone', JSON.stringify(savedTimezone));
-      }
-    });  
-  });
+    localStorage.setItem('timezone', JSON.stringify(savedTimezone));
+   });  
    
   //Clear localStorage when cancel button is clicked  
   $('#settings-cancel-button').click(()=>{
@@ -447,7 +426,7 @@ window.onload = ()=> {
       localStorage.removeItem('profile');
       localStorage.removeItem('timezone');
    });  
-    
+
 }; //end window.onload
   
   
