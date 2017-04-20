@@ -21,10 +21,26 @@ $('.alert-main').click(()=>{
   
 //Hide Bell/Notification Alert
 $('.alert-bell').hide();
-  
-//Make Bell/Notification Alert show and hide on mouse over
+
+//Make Bell/Notification Alert show on click
 $('.bell').click(()=>{
-  $('.alert-bell').toggle();
+  $('.alert-bell').show();
+});
+  
+//Make Notification 1 disappear on click
+$('#alert-bell-1').click(()=>{  
+ $('#alert-bell-1').hide(); 
+ if( $('#alert-bell-2').is(':hidden') && $('#alert-bell-1').is(':hidden') ) {
+    $('.alert-bell').hide();
+  }
+});
+      
+//Make Notification 2 disappear no click
+$('#alert-bell-2').click(()=>{ 
+ $('#alert-bell-2').hide(); 
+ if( $('#alert-bell-1').is(':hidden') && $('#alert-bell-2').is(':hidden') ) {
+    $('.alert-bell').hide();
+  }
 });
 
 //Web Traffic Charts    
@@ -129,12 +145,13 @@ data: {
 },
 }); //end Monthly Traffic Chart  
 
-  trafficHourly.style.display = 'block';
-  trafficDaily2.style.display = 'none';
-  trafficWeekly.style.display = 'none';
-  trafficMonthly.style.display = 'none';  
+//Show the Hourly Traffic Chart and hide the other 3
+trafficHourly.style.display = 'block';
+trafficDaily2.style.display = 'none';
+trafficWeekly.style.display = 'none';
+trafficMonthly.style.display = 'none';  
 
-
+//When user clicks on "Hourly" - show Hourly chart
 $('#slide-1').click((e)=>{
   $('#slide-1').addClass('selected');
   $('#slide-2').removeClass('selected');
@@ -146,6 +163,7 @@ $('#slide-1').click((e)=>{
   trafficMonthly.style.display = 'none';  
 });
 
+//When user clicks on "Daily" - show Daily chart
 $('#slide-2').click((e)=>{
   $('#slide-1').removeClass('selected');
   $('#slide-2').addClass('selected');
@@ -157,6 +175,7 @@ $('#slide-2').click((e)=>{
   trafficMonthly.style.display = 'none';  
 });
 
+//When user clicks on "Weekly" - show Weekly chart
 $('#slide-3').click((e)=>{
   $('#slide-1').removeClass('selected');
   $('#slide-2').removeClass('selected');
@@ -168,6 +187,7 @@ $('#slide-3').click((e)=>{
   trafficMonthly.style.display = 'none'; 
 });
 
+//When user clicks on "Monthly" - show Monthly chart
 $('#slide-4').click((e)=>{
   $('#slide-1').removeClass('selected');
   $('#slide-2').removeClass('selected');
@@ -178,11 +198,10 @@ $('#slide-4').click((e)=>{
   trafficWeekly.style.display = 'none';
   trafficMonthly.style.display = 'block'; 
 });
-    //end Web Traffic Charts
+//end Web Traffic Charts
   
   
-//Stand Alone Daily Traffic Chart
-
+//Daily Traffic Bar Chart
 let trafficD = new Chart(trafficDaily, {
 type: 'bar',
 data: {
@@ -196,10 +215,9 @@ data: {
     }
   ]
  }
-}); //end Stand Alone Daily Traffic Chart
+}); //end Daily Traffic Bar Chart
 
-//Mobile Users Chart
-
+//Mobile Users Donut Chart
 let mobileU = new Chart(mobileUsers, {
 type: 'doughnut',
 data: {
@@ -216,7 +234,7 @@ data: {
     }
   ]
 }
-}); // end Mobile Users Chart
+}); // end Mobile Users Donut Chart
 
 //New Members Widget
 let stats = [
@@ -326,8 +344,7 @@ $( function() {
   });
 });
 
-
-//Hide the Message User Alerts
+//Hide the Error Messages
 $(searchAlert).hide();
 $(messageAlert).hide();
 
@@ -384,7 +401,6 @@ $('.message-user-form').submit((e)=>{
 });
 
 //Use localStorage to save settings
-
 window.onload = ()=> {
   let email = localStorage.getItem('email');
   let profile = localStorage.getItem('profile');
@@ -426,42 +442,9 @@ window.onload = ()=> {
       localStorage.removeItem('profile');
       localStorage.removeItem('timezone');
    });  
-
 }; //end window.onload
-  
-  
 
 
-
-//Social Stats Widget
-//let stats = [
-//        {
-//          "name": "Twitter",
-//          "icon": "../icons/icon-twitter.svg",
-//          "stat": "10,345 re-tweets"
-//        },
-//        {
-//          "name": "Facebook",
-//          "icon": "../icons/icon-facebook.svg",
-//          "stat": "8,739 likes"
-//        }, 
-//        {
-//          "name": "Google+",
-//          "icon": "../icons/icon-google-plus.svg",
-//          "stat": "2,530 followers"
-//        } 
-//];
-//
-//let socialStats = '<ul class="social-stats">';
-//$.each(stats, function(index, item) {
-//    socialStats += '<li>';
-//    socialStats += '<img class="social-img" src="' + item.icon + '" alt="social media icon">';
-//    socialStats += '<span class="social-title">' + item.name + '</span>';
-//    socialStats += '<span class="social-number">' + item.stat + '</span>';
-//    socialStats += '</li>'; 
-//});
-//socialStats += '</ul>';
-//document.getElementById('social-stats').innerHTML = socialStats;
 
  //AJAX Social Stats Widget
 //    const socialStatsJSON = "../data/social_stats.json";

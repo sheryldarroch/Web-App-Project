@@ -31,8 +31,8 @@
           </svg>
           <div class="alert alert-bell">
             <ul class>
-              <li>You have 4 new messages.</li>
-              <li>You have 3 new followers.</li>
+              <li id="alert-bell-1">You have 4 new messages.</li>
+              <li id="alert-bell-2">You have 3 new followers.</li>
             </ul>
           </div>
         </div>
@@ -140,9 +140,9 @@
       
       </nav>
     
-      <div class="main">
+      <div class="main" role="main">
         <div class="main-search flex">
-          <h1 class="page-head">Dashboard</h1>
+          <h1 class="page-head">DASHBOARD</h1>
           <form action="index.html" method="post" role="search">
             <input type="text" name="search"  class="search" id="search-main" placeholder="&#x1f50d;  Search . . .">
           </form>
@@ -150,7 +150,7 @@
         
         <div class="traffic-main grid-100">
           <div class="traffic-sec flex">
-            <span class="traffic-title">TRAFFIC</span>
+            <h2 class="traffic-title">TRAFFIC</h2>
             <ul class="traffic-selector flex">
               <li id="slide-1" class="selected">Hourly</li>
               <li id="slide-2">Daily</li>
@@ -167,18 +167,18 @@
         
         <div class="container flex">
           <div class="traffic-daily grid-50">
-            <span class="title">DAILY TRAFFIC</span>
+            <h2 class="title">DAILY TRAFFIC</h2>
             <canvas id="traffic-daily" width="250" height="200"></canvas>
           </div> <!-- end .traffic-daily -->
           
           <div class="mobile-users grid-50">
-            <span class="title">MOBILE USERS</span>
+            <h2 class="title">MOBILE USERS</h2>
             <canvas id="mobile-users" width="250" height="200"></canvas>
           </div> <!-- end .mobile-users -->
         </div> <!-- .container  -->
         
         <div class="social-stats-container grid-100">
-          <span class="title">SOCIAL STATS</span>
+          <h2 class="title">SOCIAL STATS</h2>
           <div id="social-stats">
             <ul class="social-stats flex">
               <li>
@@ -244,14 +244,14 @@
         
         <div class="container flex">
           <div class="new-members grid-50">
-            <span class="title">NEW MEMBERS</span>
+            <h2 class="title">NEW MEMBERS</h2>
             <div id="new-members">
             
             </div> <!-- end #new-members -->
           </div> <!-- end .new-members -->
           
           <div class="recent-activity grid-50">
-            <span class="title">RECENT ACTIVITY</span>
+            <h2 class="title">RECENT ACTIVITY</h2>
             <div id="recent-activity">
            
             </div> <!-- end #recent-activity -->
@@ -260,8 +260,8 @@
         
         <div class="container flex">
           <div class="message-user grid-50">
-            <span class="title">MESSAGE USERS</span>
-            <form class="message-user-form flex" action="index.html" method="post">
+            <h2 class="title" id="message-user-title">MESSAGE USERS</h2>
+            <form class="message-user-form flex" action="index.html" method="post" role="form" aria-labelledby="message-user-title">
               <input type="text" name="search_user"  class="search" id="search-user" placeholder="Search for User">
               <textarea id="message-for-user" name="message_user" placeholder="Message for User"></textarea>
               <button id="message-user-button" class="button button-p" type="submit" value="send">Send</button>
@@ -273,8 +273,8 @@
           </div> <!-- end .message-user -->
   
           <div class="settings grid-50">
-            <span class="title">SETTINGS</span>
-            <form class="settings-form flex" action="index.html" method="post">
+            <h2 class="title" id="settings-title">SETTINGS</h2>
+            <form class="settings-form flex" action="index.html" method="post" role="form" aria-labelledby="settings-title">
               <div class="settings-switch flex">
                 <label class="settings-label" for="settings-email">Send Email Notifications</label>
                 <label class="switch">
