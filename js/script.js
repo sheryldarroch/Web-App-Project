@@ -32,6 +32,7 @@ $('#alert-bell-1').click(()=>{
  $('#alert-bell-1').hide(); 
  if( $('#alert-bell-2').is(':hidden') && $('#alert-bell-1').is(':hidden') ) {
     $('.alert-bell').hide();
+    $('.alert-indicator').hide();
   }
 });
       
@@ -40,6 +41,7 @@ $('#alert-bell-2').click(()=>{
  $('#alert-bell-2').hide(); 
  if( $('#alert-bell-1').is(':hidden') && $('#alert-bell-2').is(':hidden') ) {
     $('.alert-bell').hide();
+    $('.alert-indicator').hide();  
   }
 });
 
@@ -68,6 +70,11 @@ data: {
         }
     ]
 },
+options: {
+  legend: {
+    display: false
+  }
+}  
 }); //end Hourly Traffic Chart
 
 //Daily Traffic Chart
@@ -93,6 +100,11 @@ data: {
         }
     ]
 },
+options: {
+  legend: {
+    display: false
+  }
+}  
 }); //end Daily Traffic Chart
 
 //Weekly Traffic Chart
@@ -118,6 +130,11 @@ data: {
         }
     ]
 },
+options: {
+  legend: {
+    display: false
+  }
+}
 }); //end Weekly Traffic Chart  
 
 // Monthly Traffic Chart
@@ -143,6 +160,11 @@ data: {
         }
     ]
 },
+options: {
+  legend: {
+    display: false
+  }
+}
 }); //end Monthly Traffic Chart  
 
 //Show the Hourly Traffic Chart and hide the other 3
@@ -214,7 +236,12 @@ data: {
       hoverBackgroundColor: 'rgb(75,77,155)'
     }
   ]
- }
+ },
+options: {
+  legend: {
+    display: false
+  }
+}  
 }); //end Daily Traffic Bar Chart
 
 //Mobile Users Donut Chart
@@ -444,24 +471,6 @@ window.onload = ()=> {
    });  
 }; //end window.onload
 
-
-
- //AJAX Social Stats Widget
-//    const socialStatsJSON = "../data/social_stats.json";
-//    function displaySocialStats(data) {
-//      let socialStats = '<ul class="social-stats">';
-//      $.each(data,function(index,app) {
-//          socialStats += '<li>';
-//          socialStats += '<img class="social-img" src="' + app.icon + '" alt="social media icon">';
-//          socialStats += '<span class="social-title">' + app.name + '</span>';
-//          socialStats += '<span class="social-number">' + app.stat + '</span>';
-//          socialStats += '</li>'; 
-//      });
-//      socialStats += '</ul>';
-//      $('#social-stats').html(socialStats);
-//    }
-//    $.getJSON(socialStatsJSON, displaySocialStats);
-   //end Social Stats Widget
   
     
  

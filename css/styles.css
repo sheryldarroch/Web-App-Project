@@ -3,7 +3,7 @@ body {
   font-family: 'Roboto', sans-serif;
   color: #444;
   width: 100%;
-  max-width: 64em;
+  max-width: 100em;
   margin: 0 auto;
   border: solid 0.063em #999;
   position: relative;
@@ -86,7 +86,7 @@ body {
   position: relative;
 }
 
-.bell:before {
+.alert-indicator {
   content: "";
   width: 0.438em;
   height: 0.438em;
@@ -166,7 +166,8 @@ body {
 #settings {
   width: 1.563em;
   height: 1.563em;
-  margin: 0.625em 0.313em;
+  padding: 0.625em 0.313em;
+  border-radius: 0.25em;
   cursor: pointer;
   transition: all .75s ease-out;
 }
@@ -179,8 +180,9 @@ body {
 #visits:focus,
 #settings:hover,
 #settings:focus {
-  transform: scale(1.3);
+  background-color: #7578bd;  
 }
+
 
 /**** Main Container****/
 
@@ -722,6 +724,33 @@ input:checked + .slider:after {
   .alert-main {
     width: 43.75em;
     max-width: 43.75em;
+  }
+  
+  #app-name,
+  #profile-name {
+    font-size: 1.5em;
+  }
+  
+  #bell {
+    width: 1.75em;
+    height: 1.75em;
+  }
+  
+  .main-nav {
+    max-width: 8em;
+  }
+  
+  #dashboard,
+  #members,
+  #visits,
+  #settings {
+    width: 2.5em;
+    height: 2.5em;
+    padding: 1.75em;
+    border-radius: 0.625em;
+  }
+  .main {
+    max-width: 92em;
   }
   
 /****Social Stats****/
